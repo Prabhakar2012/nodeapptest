@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "prabhakar1978/nodeapptest"
+    dockerimagename = "prabhakar1978/nodeapptest1"
     dockerImage = ""
   }
 
@@ -25,7 +25,7 @@ pipeline {
 
     stage('Pushing Image') {
       environment {
-               registryCredential = 'dockerhublogin'
+               registryCredential = 'docker'
            }
       steps{
         script {
@@ -39,7 +39,7 @@ pipeline {
     stage('Deploying App to Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: "deploymentservice.yml", kubeconfigId: "kubernetes")
+          kubernetesDeploy(configs: "deploymentservice.yml", kubeconfigId: "kubernetes1")
         }
       }
     }
